@@ -7,7 +7,11 @@
     <groupId>org.example</groupId>
     <artifactId>test_jenkins</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+  <!--  <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.4.RELEASE</version>
+    </parent>-->
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -27,13 +31,25 @@
     </dependencies>
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <executable>true</executable>
+                    <includeSystemScope>true</includeSystemScope>
+                    <mainClass>com.lyj.TestJenkinsApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+
 </project>
